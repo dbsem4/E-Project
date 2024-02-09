@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:e_project_watch_hub/Hamza/Splash_Screen.dart.dart';
 void main() {
   runApp(const MyApp());
 }
