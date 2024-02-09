@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "899080782548",
+    "project_id": "eprojectwatchhub",
+    "storage_bucket": "eprojectwatchhub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899080782548:android:44af5bab1c0c099c37f141",
+        "android_client_info": {
+          "package_name": "com.example.e_project_watch_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZUtjSKfbVsGUEAMPApbeW9qavcrgGqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
