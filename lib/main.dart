@@ -1,3 +1,4 @@
+import 'package:e_project_watch_hub/Hamza/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Splash(),
     );
   }
 }
@@ -27,11 +28,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.pink.shade200,
         title: const Text("Watch Hub"),
         actions: const[
           CircleAvatar(
-            backgroundImage: AssetImage('images/46.jpeg'),
+            backgroundImage: AssetImage('images/Watch Hub.png'),
           ),
           SizedBox(
             width: 10,
@@ -82,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.darken),
-                      image: const AssetImage('images/Digital iconic.png'))
+                      image: const AssetImage('images/Watch Hub.png'))
               ),
               child: Container(
                 margin: const EdgeInsets.only(top: 120,left: 10),
@@ -92,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     const CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage('images/46.jpeg'),
+                      backgroundImage: AssetImage('images/logo.png'),
                     ),
                     const SizedBox(width: 4,),
 
