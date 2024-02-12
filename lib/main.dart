@@ -1,3 +1,4 @@
+import 'package:e_project_watch_hub/Hamza/Product.dart';
 import 'package:e_project_watch_hub/Hamza/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 void main() {
@@ -24,6 +25,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int currentIndex=0;
+  void pageShifter(index){
+    setState(() {
+      currentIndex=index;
+    });
+  }
+
+  List myScreens =[
+
+    Grid(),
+
+
+  ];
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -39,9 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+      body: myScreens[0],
       bottomNavigationBar: BottomNavigationBar(
-          // currentIndex: currentIndex,
-          // onTap: pageShifter,
+        // currentIndex: currentIndex,
+        // onTap: pageShifter,
           selectedItemColor: Colors.black,
           showSelectedLabels: true,
           showUnselectedLabels: true,
@@ -142,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("Privacy",style: TextStyle(
                   color: Colors.white),),
             ),
-           const SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -167,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("About App",style: TextStyle(
                   color: Colors.white),),
             ),
-           const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             const ListTile(
