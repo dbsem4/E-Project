@@ -1,7 +1,13 @@
-import 'package:e_project_watch_hub/Hamza/Splash_Screen.dart';
+import 'package:e_project_watch_hub/signup/register.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-void main() {
+
+import 'firebase_options.dart';
+void main() async{
   runApp(const MyApp());
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: register(),
     );
   }
 }
@@ -28,11 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink.shade200,
+        backgroundColor: Colors.blue,
         title: const Text("Watch Hub"),
         actions: const[
           CircleAvatar(
-            backgroundImage: AssetImage('images/Watch Hub.png'),
+            backgroundImage: AssetImage('images/46.jpeg'),
           ),
           SizedBox(
             width: 10,
@@ -83,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.darken),
-                      image: const AssetImage('images/Watch Hub.png'))
+                      image: const AssetImage('images/Digital iconic.png'))
               ),
               child: Container(
                 margin: const EdgeInsets.only(top: 120,left: 10),
@@ -93,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     const CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage('images/logo.png'),
+                      backgroundImage: AssetImage('images/46.jpeg'),
                     ),
                     const SizedBox(width: 4,),
 
