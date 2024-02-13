@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:e_project_watch_hub/signup/register.dart';
+import 'package:e_project_watch_hub/signup/login.dart';
 import 'package:flutter/material.dart';
-import 'package:e_project_watch_hub/main.dart';
 
 
 class Splash extends StatefulWidget {
@@ -16,7 +15,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     // TODO: implement initState
-    Timer(const Duration(milliseconds: 1000), ()=> Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>const register(),
+    Timer(const Duration(milliseconds: 1000), ()=> Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>const Login(),
     )),
     );
     super.initState();

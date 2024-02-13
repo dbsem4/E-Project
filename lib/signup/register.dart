@@ -10,14 +10,14 @@ import 'package:uuid/uuid.dart';
 import 'login.dart';
 
 
-class register extends StatefulWidget {
-  const register({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<register> createState() => _registerState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _registerState extends State<register> {
+class _RegisterState extends State<Register> {
 
   TextEditingController userName = TextEditingController();
   TextEditingController userAge = TextEditingController();
@@ -51,8 +51,9 @@ class _registerState extends State<register> {
       };
       if(context.mounted){
         await FirebaseFirestore.instance.collection("userData").doc(userID).set(userAdd);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("user Register ")));
-        Navigator.push(context, MaterialPageRoute(builder: (context) => login(),));
+
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("User Register ")));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login(),));
         userName.clear();
         userAge.clear();
         userEmail.clear();
@@ -94,7 +95,7 @@ class _registerState extends State<register> {
             /// Register Work Start Here ///
 
             Container(
-              margin: EdgeInsets.only(top: 160,left: 10,right: 10),
+              margin: const EdgeInsets.only(top: 160,left: 10,right: 10),
               height: 420,
               width: double.infinity,
 
@@ -118,13 +119,13 @@ class _registerState extends State<register> {
                                     }
                                     else{
                                       if(context.mounted){
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Image not selected")));
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Image not selected")));
                                       }
                                     }
                                     if(context.mounted){
                                       Navigator.pop(context);
                                     }
-                                  }, child: Text("Select from camera",style: TextStyle(color: Colors.red),)),
+                                  }, child: const Text("Select from camera",style: TextStyle(color: Colors.red),)),
 
                                   TextButton(onPressed: ()async {
                                     XFile? selectImage = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -136,7 +137,7 @@ class _registerState extends State<register> {
                                     }
                                     else{
                                       if(context.mounted){
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Image not selected")));
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Image not selected")));
                                       }
                                     }
                                     if(context.mounted){
@@ -144,7 +145,7 @@ class _registerState extends State<register> {
 
 
                                     }
-                                  }, child: Text("select from gallery")),
+                                  }, child: const Text("select from gallery")),
                                 ],
                               );
                             },);
@@ -160,73 +161,77 @@ class _registerState extends State<register> {
                         ),
                       ),
 
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
 
                       Card(
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter Your Name",
-                            prefixIcon: Icon(Icons.person),
+                            prefixIcon: const Icon(Icons.person),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(5)
                             ),
                           ),
                           controller: userName,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Card(
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter Your Age",
-                            prefixIcon: Icon(Icons.auto_graph_rounded),
+                            prefixIcon: const Icon(Icons.auto_graph_rounded),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(5)
                             ),
                           ),
                           controller: userAge,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Card(
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter Your Email",
-                            prefixIcon: Icon(Icons.email_outlined),
+                            prefixIcon: const Icon(Icons.email_outlined),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(5)
                             ),
                           ),
                           controller: userEmail,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Card(
                         child: TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter Your Password",
-                            prefixIcon: Icon(Icons.key),
+                            prefixIcon: const Icon(Icons.key),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
+                                borderSide:  const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(5)
                             ),
                           ),
                           controller: userPassword,
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Card(
                         child: ElevatedButton(onPressed: () {
                           register();
                         }, style: ElevatedButton.styleFrom(
-                          primary: Colors.indigo.shade900,
+                          backgroundColor: Colors.indigo.shade900,
                           // primary: Colors.amber.shade200,
-                          padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),// Adjust padding for button size
-                        ),child: Text("Register",style: TextStyle(color: Colors.white),)),
-                      )
+                          padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),// Adjust padding for button size
+                        ),child: const Text("Register",style: TextStyle(color: Colors.white),)),
+                      ),
+                      const SizedBox(height: 20,),
+                      Center(child: ElevatedButton(onPressed: (){
+                        const Login();
+                      }, child: const Text("Register")))
                     ],
                   ),
 

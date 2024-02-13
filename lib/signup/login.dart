@@ -1,17 +1,17 @@
 import 'package:e_project_watch_hub/main.dart';
+import 'package:e_project_watch_hub/signup/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 
-class login extends StatefulWidget {
-  const login({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<login> createState() => _loginState();
+  State<Login> createState() => _LoginState();
 }
 
-class _loginState extends State<login> {
+class _LoginState extends State<Login> {
 
 
   TextEditingController userEmail = TextEditingController();
@@ -23,8 +23,8 @@ class _loginState extends State<login> {
           email: userEmail.text,
           password: userPassword.text);
       if(context.mounted){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("user Login ")));
-        Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("User Login ")));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(),));
       }
     }on FirebaseAuthException catch(ex){
       if(context.mounted){
@@ -46,7 +46,7 @@ class _loginState extends State<login> {
               child: Column(
                 children: [
                   Text("Welcome Back",style: TextStyle(fontSize: 32,color: Colors.indigo.shade900),),
-                  SizedBox(height: 3,),
+                  const SizedBox(height: 3,),
                   Text("Login To Your Account",style: TextStyle(color: Colors.indigo.shade900),)
                 ],
               ),
@@ -58,48 +58,52 @@ class _loginState extends State<login> {
           /// Login Work Start Here ///
 
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Card(
                   child: TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter Your Email",
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: const Icon(Icons.email_outlined),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
+                          borderSide: const BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.circular(5)
                       ),
                     ),
                     controller: userEmail,
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Card(
                   child: TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter Your Password",
-                      prefixIcon: Icon(Icons.key),
+                      prefixIcon: const Icon(Icons.key),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
+                          borderSide: const BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.circular(5)
                       ),
                     ),
                     controller: userPassword,
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Card(
                   child: ElevatedButton(onPressed: () {
                     login();
                   
                   }, style: ElevatedButton.styleFrom(
-                    primary: Colors.indigo.shade900,
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),// Adjust padding for button size
-                  ),child: Text("Login",style: TextStyle(color: Colors.white),)),
-                )
+                    backgroundColor: Colors.indigo.shade900,
+                    padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),// Adjust padding for button size
+                  ),child: const Text("Login",style: TextStyle(color: Colors.white),)),
+                ),
+                const SizedBox(height: 20,),
+                Center(child: ElevatedButton(onPressed: (){
+                  const Register();
+                }, child: const Text("Register")))
               ],
             ),
           ),
