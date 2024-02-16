@@ -100,11 +100,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),// Adjust padding for button size
                   ),child: const Text("Login",style: TextStyle(color: Colors.white),)),
                 ),
-                const SizedBox(height: 20,),
-                Center(child: ElevatedButton(onPressed: (){
-                  const Register();
-                }, child: const Text("Register")))
-              ],
+               ],
             ),
           ),
         ],

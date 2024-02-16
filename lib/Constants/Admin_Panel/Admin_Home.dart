@@ -1,49 +1,21 @@
-import 'package:e_project_watch_hub/Constants/Admin_Panel/Admin_Home.dart';
-import 'package:e_project_watch_hub/Hamza/Product.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 
-import 'firebase_options.dart';
-void main() async{
-  runApp(const MyApp());
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
-  );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class Adminhome extends StatefulWidget {
+  const Adminhome({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Adminhome(),
-    );
-  }
-}
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Adminhome> createState() => _AdminhomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  List myScreens =[
-    const Grid(),
-
-  ];
+class _AdminhomeState extends State<Adminhome> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text("Watch Hub"),
-        actions: const[
+        title: const Text('Hamza'),
+        actions: const [
           CircleAvatar(
             backgroundImage: AssetImage('images/46.jpeg'),
           ),
@@ -52,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: myScreens[0],
+      body:const Text("hamza"),
       bottomNavigationBar: BottomNavigationBar(
           // currentIndex: currentIndex,
           // onTap: pageShifter,
@@ -156,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("Privacy",style: TextStyle(
                   color: Colors.white),),
             ),
-           const SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -181,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("About App",style: TextStyle(
                   color: Colors.white),),
             ),
-           const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             const ListTile(
@@ -206,4 +178,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
