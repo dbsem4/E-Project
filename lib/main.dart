@@ -1,7 +1,9 @@
+
 import 'package:e_project_watch_hub/signup/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'Hamza/Splash_Screen.dart';
 import 'firebase_options.dart';
 void main() async{
   runApp(const MyApp());
