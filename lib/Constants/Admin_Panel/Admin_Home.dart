@@ -1,5 +1,7 @@
 
+import 'package:e_project_watch_hub/Hamza/Product.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Adminhome extends StatefulWidget {
   const Adminhome({super.key});
@@ -9,22 +11,26 @@ class Adminhome extends StatefulWidget {
 }
 
 class _AdminhomeState extends State<Adminhome> {
+  List AdminmyScreens =[
+    const Grid(),
+
+  ];
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Hamza'),
+        title:  Text('Admin Panel',style: GoogleFonts.aBeeZee(fontSize: 30)),
         actions: const [
           CircleAvatar(
-            backgroundImage: AssetImage('images/46.jpeg'),
+            backgroundImage: AssetImage('images/Logo.png'),
           ),
           SizedBox(
             width: 10,
           )
         ],
       ),
-      body:const Text("hamza"),
+      body:AdminmyScreens[0],
       bottomNavigationBar: BottomNavigationBar(
           // currentIndex: currentIndex,
           // onTap: pageShifter,
@@ -32,149 +38,27 @@ class _AdminhomeState extends State<Adminhome> {
           showSelectedLabels: true,
           showUnselectedLabels: true,
           unselectedItemColor: Colors.grey.shade600,
-
+          unselectedFontSize: 15,
           items: const [
             BottomNavigationBarItem(
-                label: 'Home',
-                icon: Icon(Icons.home)),
+                label: 'Orders',
+                icon: Icon(Icons.border_color_sharp)),
 
             BottomNavigationBarItem(
-                label: 'About',
-                icon: Icon(Icons.info)),
-
-            BottomNavigationBarItem(
-                label: 'Product',
+                label: 'Products',
                 icon: Icon(Icons.production_quantity_limits_sharp)),
 
             BottomNavigationBarItem(
-                label: 'Apis',
-                icon: Icon(Icons.api_sharp)),
+                label: 'Users',
+                icon: Icon(Icons.supervised_user_circle_sharp)),
 
             BottomNavigationBarItem(
-                label: 'Profile',
-                icon: Icon(Icons.person))
+                label: 'Logout',
+                icon: Icon(Icons.logout,))
           ]),
 
-      drawer: Drawer(
-        width: 280,
-        backgroundColor: Colors.black,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-
-            Container(
-              width: 280,
-              height: 200,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.darken),
-                      image: const AssetImage('images/Digital iconic.png'))
-              ),
-              child: Container(
-                margin: const EdgeInsets.only(top: 120,left: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('images/46.jpeg'),
-                    ),
-                    const SizedBox(width: 4,),
-
-                    Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Muhammad Hamza",style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
-                          ),),
-                          Text("ha2290501@gmail.com",style: TextStyle(
-                              color: Colors.white
-                          ),)
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.home,color: Colors.white,),
-              title: Text("Home",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-
-            const ListTile(
-              leading: Icon(Icons.settings,color: Colors.white,),
-              title: Text("Settings",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-
-            const ListTile(
-              leading: Icon(Icons.privacy_tip,color: Colors.white,),
-              title: Text("Privacy",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-
-            const ListTile(
-              leading: Icon(Icons.location_city,color: Colors.white,),
-              title: Text("Location",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.person,color: Colors.white,),
-              title: Text("Profile",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.info,color: Colors.white,),
-              title: Text("About App",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ListTile(
-              leading: Icon(Icons.logout,color: Colors.white,),
-              title: Text("Logout",style: TextStyle(
-                  color: Colors.white),),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Spacer(),
-
-            const Center(
-              child: Text("Version 1.1.0",style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12
-              ),),
-            )
-          ],
-        ),
-      ),
+      
+      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add)),
     );
   }
 }
