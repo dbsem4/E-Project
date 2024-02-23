@@ -216,7 +216,7 @@ class _RegisterState extends State<Register> {
         child: ElevatedButton(onPressed: () {
           register();
         }, style: ElevatedButton.styleFrom(
-          primary: Colors.indigo.shade900,
+          backgroundColor: Colors.indigo.shade900,
           // primary: Colors.amber.shade200,
           padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),// Adjust padding for button size
         ),child: const Text("Register",style: TextStyle(color: Colors.white),)),
