@@ -1,7 +1,7 @@
 import 'dart:async';
-
-import 'package:e_project_watch_hub/signup/login.dart';
 import 'package:flutter/material.dart';
+
+import '../login.dart';
 
 
 class Splash extends StatefulWidget {
