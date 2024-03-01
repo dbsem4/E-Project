@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Grid extends StatefulWidget {
@@ -25,14 +26,16 @@ class _GridState extends State<Grid> {
   
   int currentIndex = 0;
   
-  List brandName = ["Rolex", "Casio", "SEIKO"];
+  List brandName = ["Rolex", "Calvin Kalein", "Apple", "Casio"];
+
+  List logoName = ['images/rolexlogo.png','images/cklogo.png','images/applelogo.png','images/casiologo.png'];
 
   List pictures = ['images/rolex.png', 'images/ck.png', 'images/apple.png','images/casio.png'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+        body: SafeArea(
         top: true,
         child: SingleChildScrollView(
           physics: const ScrollPhysics(),
@@ -83,21 +86,35 @@ class _GridState extends State<Grid> {
                       });
                     },
                     child: Container(
-                      width: 120,
+                      width: 140,
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: currentIndex == index ? Colors.black : Colors.transparent,
                           borderRadius: BorderRadius.circular(10)),
                       margin: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 10),
-                      child: Text(
-                        brandName[index],
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: currentIndex == index
-                                ? Colors.white
-                                : Colors.black),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(logoName[index])),
+                            ),
+                          ),
+                          Text(
+                            brandName[index],
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: currentIndex == index
+                                    ? Colors.white
+                                    : Colors.black),
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -106,64 +123,85 @@ class _GridState extends State<Grid> {
             ),
 
 
-            Container(
-              margin: const EdgeInsets.only(left: 25),
-              child: GridView.count(
-               shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const ScrollPhysics(),
-                childAspectRatio: 150/250,
-                crossAxisCount: 2,children: List.generate(myimg.length, (index) => Stack(
-                children: [
-                  Container(
-                    width: 150,
-                    height: 280,
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.shade400
+              StreamBuilder(
+              stream: FirebaseFirestore.instance.collection("Products").snapshots(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  String productLength = snapshot.data!.docs.length;
+                  return Container(
+                    margin: const EdgeInsets.only(left: 25),
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      physics: const ScrollPhysics(),
+                      childAspectRatio: 150/250,
+                      crossAxisCount: 2,children: List.generate(myimg.length,(index) {
+
+
+                        ///
+
+                        return Stack(
+                          children: [
+                            Container(
+                              width: 150,
+                              height: 280,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.grey.shade400
+                              ),
+
+                            ),
+
+                            Positioned(
+                              top: 14,
+                              left: 5,
+                              child: Container(
+                                width: 140,
+                                height: 140,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(myimg[index]))
+                                ),
+
+                              ),
+                            ),
+                            Positioned(
+                              left: 10,
+                              child: Container(
+                                height: 60,
+                                margin: const EdgeInsets.only(top: 165),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('hellow world'),
+                                    Text("hdsij")
+                                  ],
+                                ),
+
+                              ),
+                            ),
+                          ],
+                        );
+                      },),
                     ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Icon(Icons.error_outline);
+                } else {
+                  return CircularProgressIndicator();
+                }
+              })
+        ]),
 
-                  ),
-
-                  Positioned(
-                    top: 14,
-                    left: 5,
-                    child: Container(
-                      width: 140,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(myimg[index]))
-                      ),
-
-                      ),
-                    ),
-                  Positioned(
-                    left: 10,
-                    child: Container(
-                      height: 60,
-                      margin: const EdgeInsets.only(top: 165),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('hellow world'),
-                          Text("hdsij")
-                        ],
-                      ),
-
-                    ),
-                  ),
-                ],
-              )
-               ),
-                  ),
-            ),
-              ]),
         ),
-      )
+
+      ),
+
+
+
     );
   }
 }

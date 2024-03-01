@@ -1,5 +1,6 @@
-
-import 'package:e_project_watch_hub/Hamza/Product.dart';
+import 'package:e_project_watch_hub/Constants/Admin_Panel/Orders_Admin_panel.dart';
+import 'package:e_project_watch_hub/Constants/Admin_Panel/Products_Admin_Panel.dart';
+import 'package:e_project_watch_hub/Constants/Admin_Panel/Users_Admin_Panel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,29 +12,38 @@ class Adminhome extends StatefulWidget {
 }
 
 class _AdminhomeState extends State<Adminhome> {
-  List AdminmyScreens =[
-    const Grid(),
-
+  List adminmyScreens =[
+    const Order(),
+    const AdminProduct(),
+    const Users(),
   ];
+
+  int currentIndex = 0;
+
+  void pageShifter(index){
+    setState(() {
+      currentIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title:  Text('Admin Panel',style: GoogleFonts.aBeeZee(fontSize: 30)),
+        title:  currentIndex == 0 ? Text('Order',style: GoogleFonts.abhayaLibre(fontSize: 30)) : currentIndex == 1 ? Text ('Product',style: GoogleFonts.abhayaLibre(fontSize: 30)): Text('User',style: GoogleFonts.abhayaLibre(fontSize: 30)),
         actions: const [
           CircleAvatar(
-            backgroundImage: AssetImage('images/Logo.png'),
+            backgroundImage: AssetImage('images/Watch Hub.png'),
           ),
           SizedBox(
             width: 10,
           )
         ],
       ),
-      body:AdminmyScreens[0],
+      body:adminmyScreens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-          // currentIndex: currentIndex,
-          // onTap: pageShifter,
+            currentIndex: currentIndex,
+            onTap: pageShifter,
           selectedItemColor: Colors.black,
           showSelectedLabels: true,
           showUnselectedLabels: true,
@@ -57,8 +67,8 @@ class _AdminhomeState extends State<Adminhome> {
                 icon: Icon(Icons.logout,))
           ]),
 
-      
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add)),
+
+
     );
   }
 }

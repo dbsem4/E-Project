@@ -36,7 +36,7 @@ class _SplashState extends State<Splash> {
           height: 300,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/Watch Hub.png',)),
+                image: AssetImage('images/re.png',)),
 
 
           ),
